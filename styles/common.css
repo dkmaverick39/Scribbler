@@ -1,0 +1,40 @@
+.header{
+    display:flex;
+    flex-direction: row;
+    color:black
+}
+
+.left-header{
+    text-align: left;
+    width:50%;
+}
+.right-header{
+   text-align: right;
+   width:50%;
+}
+
+.subheading{
+    font-family: Ubuntu Mono;
+}
+.left-header-font{
+    font-family: 'Montez', cursive; 
+    color:blue;
+}
+
+.button-color{
+    background-color: blue;
+}
+
+
+.posts-buttons{
+    display: flex;
+    flex-direction: row;
+    top:50%;
+    left:45%;
+    position:absolute;
+}
+
+.button2{
+   background-color: orange;
+   margin:5px;
+}
