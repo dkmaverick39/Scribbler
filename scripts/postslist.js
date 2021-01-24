@@ -28,7 +28,11 @@ function displayAllPosts(allPosts){
 localStorage.setItem('allInitialPosts' ,JSON.stringify(allInitialPosts));
 displayAllPosts(allInitialPosts);
 
-function deletePost(postId){   
+
+function deletePost(postId){  
+      if(!confirm("Are you sure want to delete this posts?")){
+          return;
+      } 
       var posts=[];
       var currentPosts = JSON.parse(localStorage.getItem('allInitialPosts'));
       for(var i=0;i<currentPosts.length;i++){
