@@ -1,0 +1,33 @@
+#postContentDetails{
+    margin-top: 50px;
+}
+
+#postHeader{
+    text-align: center;
+    font-weight: bold;
+}
+
+#postAuthorAndButton{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#postAuthor{
+    width: 50%;
+}
+
+#postEditButton{
+   text-align:right;
+   width: 50%;
+}
+
+#likeButton{
+    margin-top: 20px;
+    margin-bottom: 20px;  
+}
+
+#postComments{
+    margin-top: 20px;
+}
