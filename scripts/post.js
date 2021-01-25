@@ -2,7 +2,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var postId = url.searchParams.get("postId");
 
-var allPosts = JSON.parse(localStorage.getItem('allInitialPosts'));
+var allPosts = JSON.parse(sessionStorage.getItem('allInitialPosts'));
 
 var postContent = '';
 var postHeader = '';
@@ -38,7 +38,7 @@ function incrementLikesCount(){
            noOfLikes = noOfLikes + 1;
            allPosts[i].likes = noOfLikes;
            document.getElementById('noOfLikesCount').innerHTML = allPosts[i].likes + ' people likes this!'; 
-           localStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));         
+           sessionStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));         
         }
     };    
 }
@@ -56,7 +56,7 @@ function addCommentToPost(){
     for(var i=0; i<allPosts.length;i++){
         if(allPosts[i].id == postId){           
            allPosts[i].allComments.push(comment);
-           localStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
+           sessionStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
            postAllComments =   allPosts[i].allComments;
            document.getElementById('commentText').value = '';
         }
@@ -105,7 +105,7 @@ function savePostContent(){
             var newContentText = document.getElementById("postContentText").value;
             allPosts[i].header = newHeader;
             allPosts[i].content = newContentText;
-            localStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
+            sessionStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
          }
     }
     window.location.reload(true);

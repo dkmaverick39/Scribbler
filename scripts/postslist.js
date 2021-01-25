@@ -1,4 +1,4 @@
-var currInitialPost = localStorage.getItem('allInitialPosts');
+var currInitialPost = sessionStorage.getItem('allInitialPosts');
 var allInitialPosts;
 if (currInitialPost == undefined){
     allInitialPosts =  [
@@ -13,8 +13,8 @@ if (currInitialPost == undefined){
             {   id:2,
                 name:"Colby Fayock",
                 header:"What is linting and how can it save you time?",
-                shortContent : "One of the biggest challenges in software development is time. It’s something we can’t easily get more",
-                content:"One of the biggest challenges in software development is time. It’s something we can’t easily get more of, but linting can help us make the most out of the time we have.",
+                shortContent : "One of the biggest challenges in software development is time. It's something we can't easily get more",
+                content:"One of the biggest challenges in software development is time. It's something we can't easily get more of, but linting can help us make the most out of the time we have.",
                 likes:0,
                 allComments:[]
             },
@@ -44,7 +44,7 @@ if (currInitialPost == undefined){
             }
         ];
 }else{
-    var currentPosts = JSON.parse(localStorage.getItem('allInitialPosts'));
+    var currentPosts = JSON.parse(sessionStorage.getItem('allInitialPosts'));
     allInitialPosts = currentPosts;
 }
 
@@ -67,7 +67,7 @@ function displayAllPosts(allPosts){
   document.getElementById("allPosts").innerHTML = posthtml;
 }
 
-localStorage.setItem('allInitialPosts' ,JSON.stringify(allInitialPosts));
+sessionStorage.setItem('allInitialPosts' ,JSON.stringify(allInitialPosts));
 displayAllPosts(allInitialPosts);
 
 
@@ -76,14 +76,14 @@ function deletePost(postId){
           return;
       } 
       var posts=[];
-      var currentPosts = JSON.parse(localStorage.getItem('allInitialPosts'));
+      var currentPosts = JSON.parse(sessionStorage.getItem('allInitialPosts'));
       for(var i=0;i<currentPosts.length;i++){
           if(currentPosts[i].id != parseInt(postId)){
               posts.push(currentPosts[i]);
           }
       }
       //alert(posts);
-      localStorage.setItem('allInitialPosts' ,JSON.stringify(posts));
+      sessionStorage.setItem('allInitialPosts' ,JSON.stringify(posts));
       displayAllPosts(posts);
 }
 
