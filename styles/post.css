@@ -23,6 +23,11 @@
    width: 50%;
 }
 
+#postSaveButton{
+    text-align:right;
+    width: 50%;
+}
+
 #likeButton{
     margin-top: 20px;
     margin-bottom: 20px;  

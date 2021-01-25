@@ -37,7 +37,10 @@
         <div id="postAuthorAndButton">
             <div id="postAuthor"></div>
             <div id="postEditButton">
-                <button class="btn btn-danger">Edit</button>
+                <button class="btn btn-danger" onclick="editContent()">Edit</button>
+            </div>
+            <div id="postSaveButton">
+                <button class="btn btn-danger" onclick="savePostContent()">Save</button>
             </div>
         </div> 
         <div id="postContent"></div> 
@@ -51,6 +54,7 @@
               </div>
               <button type="submit" class="btn btn-danger" onclick="addCommentToPost()">Comment</button>          
         </div>
+
         <div id="postComments">
              <label style="font-weight: bolder;">All Comments</label>
              <div id = "allComments"></div>

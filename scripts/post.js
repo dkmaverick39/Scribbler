@@ -25,7 +25,7 @@ document.getElementById('postContent').innerHTML = postContent;
 if(noOfLikes > 0){
    document.getElementById('noOfLikesCount').innerHTML = noOfLikes + ' people likes this!'; 
 }
-
+document.getElementById("postSaveButton").style.display='none';
 displayComments(postAllComments);
 
 function incrementLikesCount(){
@@ -48,9 +48,13 @@ function addCommentToPost(){
     var url = new URL(url_string);
     var postId = url.searchParams.get("postId");
     var postAllComments ;
+    var comment =  document.getElementById('commentText').value;
+    if(comment == undefined || comment == ''){
+        alert("Comment can not blank.");
+        return;
+    }
     for(var i=0; i<allPosts.length;i++){
-        if(allPosts[i].id == postId){
-           var comment =  document.getElementById('commentText').value;
+        if(allPosts[i].id == postId){           
            allPosts[i].allComments.push(comment);
            localStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
            postAllComments =   allPosts[i].allComments;
@@ -62,6 +66,26 @@ function addCommentToPost(){
    
 }
 
+function editContent(){
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var postId = url.searchParams.get("postId");
+    for(var i=0; i<allPosts.length;i++){
+        if(allPosts[i].id == postId){           
+            var headerHtml = '<input type="text" name="header" id="postHeaderContent" style="border:1px solid red"/>';
+            var contentHtml = '<textarea class="form-control"  id="postContentText" name="postContent" style="border:1px solid red"/>';
+            document.getElementById("postHeader").innerHTML = headerHtml;
+            document.getElementById("postContent").innerHTML = contentHtml;
+
+            document.getElementById("postHeaderContent").value = allPosts[i].header;
+            document.getElementById("postContentText").value = allPosts[i].content;
+
+            document.getElementById("postEditButton").style.display='none';
+            document.getElementById("postSaveButton").style.display='inline';
+        }
+    }
+}
+
 function displayComments(postAllComments){
     var comments = "";
     for(var i=0;i<postAllComments.length;i++){
@@ -70,3 +94,20 @@ function displayComments(postAllComments){
     document.getElementById("allComments").innerHTML = comments;
 }
 
+function savePostContent(){
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var postId = url.searchParams.get("postId");
+    for(var i=0; i<allPosts.length;i++){
+        if(allPosts[i].id == postId){           
+ 
+            var newHeader = document.getElementById("postHeaderContent").value;
+            var newContentText = document.getElementById("postContentText").value;
+            allPosts[i].header = newHeader;
+            allPosts[i].content = newContentText;
+            localStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
+         }
+    }
+    window.location.reload(true);
+ 
+}
