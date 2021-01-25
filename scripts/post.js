@@ -54,6 +54,7 @@ function addCommentToPost(){
            allPosts[i].allComments.push(comment);
            localStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
            postAllComments =   allPosts[i].allComments;
+           document.getElementById('commentText').value = '';
         }
     }
    
