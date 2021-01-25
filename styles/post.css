@@ -5,6 +5,7 @@
 #postHeader{
     text-align: center;
     font-weight: bold;
+    width: 100%;
 }
 
 #postAuthorAndButton{

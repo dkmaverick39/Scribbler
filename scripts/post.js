@@ -24,6 +24,8 @@ document.getElementById('postAuthor').innerHTML = postAuthor;
 document.getElementById('postContent').innerHTML = postContent;
 if(noOfLikes > 0){
    document.getElementById('noOfLikesCount').innerHTML = noOfLikes + ' people likes this!'; 
+}else{
+   document.getElementById('noOfLikesCount').innerHTML =  'Be the first one to like this!'; 
 }
 document.getElementById("postSaveButton").style.display='none';
 displayComments(postAllComments);
@@ -55,7 +57,7 @@ function addCommentToPost(){
     }
     for(var i=0; i<allPosts.length;i++){
         if(allPosts[i].id == postId){           
-           allPosts[i].allComments.push(comment);
+           allPosts[i].allComments.unshift(comment);
            sessionStorage.setItem('allInitialPosts' ,JSON.stringify(allPosts));
            postAllComments =   allPosts[i].allComments;
            document.getElementById('commentText').value = '';
@@ -72,7 +74,7 @@ function editContent(){
     var postId = url.searchParams.get("postId");
     for(var i=0; i<allPosts.length;i++){
         if(allPosts[i].id == postId){           
-            var headerHtml = '<input type="text" name="header" id="postHeaderContent" style="border:1px solid red"/>';
+            var headerHtml = '<input type="text" name="header" id="postHeaderContent" style="border:1px solid red;width:100%;text-align:center"/>';
             var contentHtml = '<textarea class="form-control"  id="postContentText" name="postContent" style="border:1px solid red"/>';
             document.getElementById("postHeader").innerHTML = headerHtml;
             document.getElementById("postContent").innerHTML = contentHtml;
